@@ -7,7 +7,7 @@ import React from 'react'
 
 const ShopSection = ({ category, name }) => {
     return (
-        <div className='text-3xl overflow-x-scroll hidescroll text-white bg-black'>
+        <div className='text-3xl overflow-x-scroll hidescroll  bg-none'>
             <Link href={`/Shop/${category}`} className='center relative font-extralight top-12 underline'>
                 {name}
             </Link>

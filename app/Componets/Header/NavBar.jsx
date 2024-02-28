@@ -97,7 +97,7 @@ function NavBar() {
 
             </div >
 
-            <nav className='bg-black bg-opacity-25 h-10 lg:h-16 w-full fixed z-50 top-0 flex items-center justify-evenly p-2 '>
+            <nav className='bg-  h-10 lg:h-16 w-full fixed z-50 top-0 flex items-center justify-evenly p-2 '>
 
                 <div className={`${showMobileMenu ? 'h-12 opacity-100 ' : 'h-[1px]  opacity-25'} text-white flex items-center justify-center gap-4 lg:hidden bg-black absolute w-full  top-10  trans`}>
                     {menu.map((item) => {
@@ -110,13 +110,13 @@ function NavBar() {
 
 
 
-                <h1 className='font1 text-white font-light text-4xl text-center hidden lg:block'>Opulence</h1>
+                <h1 className='font1  font-light text-4xl text-center hidden lg:block'>Opulence</h1>
 
                 <div className=''>
                     <div className='flex justify-between lg:w-[15rem]'>
                         <button onClick={toggleMobileMenu}>
 
-                            <ImMenu size={30} color='white' className='lg:hidden' />
+                            <ImMenu size={30} color='gray' className='lg:hidden' />
                         </button>
                         <div className='lg:flex justify-between w-full hidden text-white'>
                             {menu.map((item) => {
@@ -129,21 +129,12 @@ function NavBar() {
                     </div>
 
                 </div>
-                <h1 className='font1 text-white font-light text-2xl text-center lg:hidden block'>Opulence</h1>
+                <h1 className='font1  font-light text-2xl text-center lg:hidden block'>Opulence</h1>
                 <button className='' onClick={() => { setShowCart(true) }}>
-                    <IoBagHandle size={30} color='white' />
+                    <IoBagHandle size={30} color='gray' />
                 </button>
             </nav>
-            {
-                navRoute[0]?.toUpperCase()?.includes('SHOP') && <div className=' bg-black-800 bg-opacity-0 w-full'>
-                    <div className='h-20 w-full evenly gap-2 font-light text-center m-auto bg-black-900 text-white'>
-                        {category.map(item => (<Link key={item} href={item.includes('Hot') ? `/Shop/HotTools` : `/Shop/${item.replace(/\s/g, '')}`}>
-                            <div className='h-12 w-20  rounded'>
-                                <h1 className='text-white '>{item.includes('Hot') ? 'Tools & Acces...' : item}</h1>
-                            </div></Link>))}
-                    </div>
-                </div>
-            }
+
         </div >
 
     )

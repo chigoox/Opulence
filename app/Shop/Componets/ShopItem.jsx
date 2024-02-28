@@ -28,7 +28,7 @@ function ShopItem({ shopItems, location = 'HotTools', onShopPage }) {
             <Skeleton isLoaded={productsLoaded} className='w-full h-full bg-gray-400'>
                 <Link href={`/Shop/${location}/${name.replace(/\s/g, '')}`}>
                     <Image width={1920} height={1080} quality={100} src={images[0]} className='h-[10rem] md:h-[20rem] w-full object-cover' alt="" />
-                    <div className='h-[30%] md:h-[20%] text-white bg-opacity-75  bottom-0  w-full flex items-center flex-col p-2'>
+                    <div className='h-[30%] md:h-[20%]  bg-opacity-75  bottom-0  w-full flex items-center flex-col p-2'>
 
                         <div className={'font.className'}>
                             <h1 className='md:text-xl text-sm border w-60  p-1  text-center max-h-16 overflow-hidden md:max-h-20'>{name.substr(0, 50)}{name.length > 50 ? '...' : ''}</h1>

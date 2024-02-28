@@ -25,7 +25,7 @@ function CategoryPage() {
     const categoryName = validatePath(path)
 
     return (
-        <div className=' relative min-h-screen flex-col bg-black text-white'>
+        <div className=' relative min-h-screen flex-col '>
 
 
             <ShopCategoryTitle title={categoryName} />

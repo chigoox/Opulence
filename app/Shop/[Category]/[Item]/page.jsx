@@ -10,7 +10,7 @@ export default function ItemPage({ }) {
     const productPathName = usePathname().replace(`/Shop/${productCategory}/`, '')
 
     return (
-        <div className='bg-black-900 text-white'>
+        <div className='text-white'>
             < Product product={productPathName} category={productCategory} />
         </div>
     )

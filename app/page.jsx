@@ -33,7 +33,7 @@ function Home() {
         setShowShopView={setShowShopView}
       />
 
-      <div className='absolute h-screen w-screen hidden lg:block '>
+      <div className='absolute h-screen w-screen hidden lg:block bg-[#fff9ee] '>
 
         <div className='w-40 top-20 left-auto trans ml-4 xl:ml-40 relative'>
           <h1 className='text-6xl font-extrabold '>Luxury</h1>
