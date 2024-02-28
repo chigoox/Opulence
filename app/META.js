@@ -10,8 +10,8 @@ export const siteEmail = 'Opulence'
 
 
 export const NavBarVideoURL = 'hLDQ88vAhIs'
-export const orderNumberPrefix = 'AFS'
-export const category = ['Hookah Pen']
+export const orderNumberPrefix = 'OTL'
+export const category = ['Lounge Wear']
 
 export const IGFeedURL = 'https://feeds.behold.so/uPB30an9PtEhQZrvqN22'
 
