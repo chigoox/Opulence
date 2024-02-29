@@ -5,6 +5,7 @@ import { ImHome, ImMenu } from "react-icons/im";
 import { IoBag, IoBagHandle, IoClose } from "react-icons/io5";
 import ProductView from "./Shop/Componets/ProductView";
 import ProductsList from "./Shop/Componets/ProductsList";
+import Link from "next/link";
 //import ProductView from '../Support/ProductView';
 
 
@@ -27,14 +28,14 @@ function Home() {
 
 
   return (
-    <div className='bg-white  relative overflow-x-hidden'>
+    <div className='bg-[#fff9ee]   h-screen overflow- -hidden  relative overflow-x-hidden'>
 
       <ProductView
         showShopView={showShopView}
         setShowShopView={setShowShopView}
       />
 
-      <div className='absolute h-screen w-screen hidden lg:block bg-[#fff9ee] '>
+      <div className='absolute h-screen hidescroll w-screen hidden lg:block bg-[#fff9ee] '>
 
         <div className='w-40 top-20 left-auto trans ml-4 xl:ml-40 relative'>
           <h1 className='text-6xl font-extrabold '>Luxury</h1>
@@ -85,12 +86,12 @@ function Home() {
           ].map((item, index) => {
             if (item == 'Images/icon.png' || item == 'Images/icon.png?t=1707812753283')
               return (
-                <div key={index} className='col-span-4 group relative h-auto flex items-center justify-center'>
+                <Link href={'/Shop'} key={index} className='col-span-4 group relative h-auto flex items-center justify-center'>
                   <div className='absolute  h-full w-full items-center justify-center flex'>
                     <h1 className='font-light group-hover:w-full text-white bg-black w-3/4  text-center trans-slow'>Shop Now</h1>
                   </div>
                   <img className='object-cover  h-full w-full m-auto' src={item} alt="" />
-                </div>
+                </Link>
               )
 
             return (
