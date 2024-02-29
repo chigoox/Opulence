@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { ImHome, ImMenu } from "react-icons/im";
 import { IoBag, IoBagHandle, IoClose } from "react-icons/io5";
 import ProductView from "./Shop/Componets/ProductView";
+import ProductsList from "./Shop/Componets/ProductsList";
 //import ProductView from '../Support/ProductView';
 
 
@@ -113,6 +114,8 @@ function Home() {
       <div className=' xl:top-72 lg:top-[30rem]  relative'>
         <h1 className='mt-24 mb-10 text-5xl text-center text-black font-light  '> NEW Arrivals</h1>
 
+
+
         <motion.div
           initial={{
             x: "-100%",
@@ -122,9 +125,11 @@ function Home() {
             x: "0%",
             opacity: '100%'
           }}
-          className='grid grid-cols-4 relative '>
+          className='gr id gri d-cols-4 relative '>
 
-          {[
+          <ProductsList search={'isNew'} category={'true'} list={true} limit={10} />
+
+          {/* {[
             "https://www.bbxbrand.com/cdn/shop/files/2833BLACKSLIM_a2a384b0-6dc3-4f12-87cb-2c01d4956c4c.png?v=1706145096",
             'https://www.bbxbrand.com/cdn/shop/files/0083SLIM.png?v=1707756379',
             'https://www.bbxbrand.com/cdn/shop/files/0238SLIM.png?v=1706143758',
@@ -147,7 +152,9 @@ function Home() {
                 </div>
               </button>
             )
-          })}
+          })} */}
+
+
         </motion.div>
       </div>
     </div>
