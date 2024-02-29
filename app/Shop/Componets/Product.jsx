@@ -6,6 +6,7 @@ import { useGetItemData } from '@/app/Hooks/useGetItemData'
 import ItemQTYButton from '@/app/Shop/Componets/ItemQTYButton'
 import { fetchPricesFor, fetchProducts } from '@/app/myCodes/Stripe'
 import { Button, Select, SelectItem, Skeleton } from "@nextui-org/react"
+import { message } from 'antd'
 import { Red_Hat_Text } from 'next/font/google'
 import { useEffect, useState } from 'react'
 
@@ -52,7 +53,9 @@ const Product = ({ product, forThis, category }) => {
 
 
     const canAddToCart = () => {
-        return thisProduct?.metadata.qty >= 1
+        return (itemToCheckOut.StockQty >= 1) ? true : false
+        message.error('Out of stock', 5)
+
     }
 
 
@@ -69,6 +72,7 @@ const Product = ({ product, forThis, category }) => {
     const [prices, setPrices] = useState({})
     const [itemToCheckOut, setItemToCheckOut] = useState({ priceID: 0, Qty: 0, images: [] })
     const addToCart = () => {
+        console.log(itemToCheckOut.Qty)
         if (itemToCheckOut.priceID && itemToCheckOut.Qty > 0 && canAddToCart()) dispatch({ type: "ADD_TO_CART", value: itemToCheckOut })
     }
     const variants = Object.values(prices).map(i => {
@@ -117,6 +121,8 @@ const Product = ({ product, forThis, category }) => {
         )
     }
 
+    console.log(itemToCheckOut)
+
 
 
     return (
@@ -142,14 +148,14 @@ const Product = ({ product, forThis, category }) => {
                         <PayOptions price={price} />
                         <div className='center flex-wrap md:w-3/4 m-auto mt-2 gap-2'>
                             <Select
-                                onChange={({ target }) => { setItemToCheckOut(prev => ({ ...prev, price: Number(target.value.split(',', 3)[2]?.replace('$', '')), priceID: target.value.split(',', 2)[0], variant: target.value.split(',', 2)[1] })) }}
+                                onChange={({ target }) => { console.log(target.value); setItemToCheckOut(prev => ({ ...prev, StockQty: target.value.split(',', 4)[3], price: Number(target.value.split(',', 3)[2]?.replace('$', '')), priceID: target.value.split(',', 2)[0], variant: target.value.split(',', 2)[1] })) }}
                                 labelPlacement={'outside'}
                                 label="Select Variant"
                                 className="max-w-xs my-8 text-black"
                             >
                                 {variants.map((variant) => {
                                     return (
-                                        <SelectItem key={[variant.id, variant.nickname, variant.metadata.price]} name={variant.nickname}>
+                                        <SelectItem key={[variant.id, variant.nickname, variant.metadata.price, Number(variant.metadata.qty)]} name={variant.nickname}>
                                             {`${variant.nickname} - ${variant.metadata.price}`}
                                         </SelectItem>
                                     )
@@ -167,7 +173,7 @@ const Product = ({ product, forThis, category }) => {
                         <div className={font1.className}>
                             <h1 className='text-2xl font-extralight text-white bg-black-800'>Description</h1>
                             <Skeleton className='w-fit' isLoaded={desc}>
-                                <h1>{desc}</h1>
+                                <h1 className='text-black'>{desc}</h1>
                                 <h1>{feats}</h1>
                             </Skeleton>
                         </div>

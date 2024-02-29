@@ -26,7 +26,7 @@ function Home() {
 
 
   return (
-    <div className='bg-white border-4 border-black  relative overflow-x-hidden'>
+    <div className='bg-white  relative overflow-x-hidden'>
 
       <ProductView
         showShopView={showShopView}

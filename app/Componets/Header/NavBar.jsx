@@ -45,7 +45,6 @@ function NavBar() {
     }, [])
 
 
-    console.log(width)
 
     const toggleMobileMenu = () => {
         setShowMobileMenu(!showMobileMenu)
@@ -97,9 +96,9 @@ function NavBar() {
 
             </div >
 
-            <nav className='bg-  h-10 lg:h-16 w-full fixed z-50 top-0 flex items-center justify-evenly p-2 '>
+            <nav className='h-10 lg:h-16 w-full fixed z-50 top-0 flex items-center justify-evenly p-2 '>
 
-                <div className={`${showMobileMenu ? 'h-12 opacity-100 ' : 'h-[1px]  opacity-25'} flex items-center justify-center gap-4 lg:hidden bg-black absolute w-full  top-10  trans`}>
+                <div className={`${showMobileMenu ? 'h-12 opacity-100 ' : 'h-[1px]  opacity-25'} flex items-center justify-center gap-4 lg:hidden text-white bg-black absolute w-full  top-10  trans`}>
                     {menu.map((item) => {
                         return (
                             <MenuItem key={item} name={item} showMobileMenu={showMobileMenu} />
@@ -118,7 +117,7 @@ function NavBar() {
 
                             <ImMenu size={30} color='gray' className='lg:hidden' />
                         </button>
-                        <div className='lg:flex justify-between w-full hidden text-white'>
+                        <div className='lg:flex justify-between w-full hidden  text-black'>
                             {menu.map((item) => {
                                 return (
                                     <MenuItem key={item} name={item} />
