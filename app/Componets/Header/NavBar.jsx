@@ -4,7 +4,7 @@ import useFilterEmptyCategory from '@/app/Hooks/useFilterCategory'
 import { NavBarVideoURL, categoryLinks, siteName } from '@/app/META'
 import { Button } from '@nextui-org/react'
 import { HomeIcon, ShoppingBagIcon, User } from 'lucide-react'
-import { Jost } from 'next/font/google'
+import { Alex_Brush, Jost } from 'next/font/google'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { Suspense, useEffect, useState } from 'react'
@@ -19,6 +19,10 @@ import useWindowDimensions from '@/app/Hooks/useGetWindowDeimentions'
 import { ImHome, ImMenu } from 'react-icons/im'
 import { IoBag, IoBagHandle, IoClose } from 'react-icons/io5'
 
+const alexFont = Alex_Brush({
+    weight: '400',
+    subsets: ['latin'],
+})
 const jost = Jost({
     weight: '400',
     subsets: ['latin'],
@@ -96,7 +100,7 @@ function NavBar() {
 
             </div >
 
-            <nav className='h-10 lg:h-16 w-full fixed z-50 top-0 flex items-center justify-evenly p-2 '>
+            <nav className={` ${showMobileMenu ? ' text-white bg-opacity-100' : ' bg-opacity-0'} trans  h-10 bg-black lg:h-16 w-full fixed z-50 top-0 flex items-center justify-evenly p-2`}>
 
                 <div className={`${showMobileMenu ? 'h-12 opacity-100 ' : 'h-[1px]  opacity-25'} flex items-center justify-center gap-4 lg:hidden text-white bg-black absolute w-full  top-10  trans`}>
                     {menu.map((item) => {
@@ -109,10 +113,14 @@ function NavBar() {
 
 
 
-                <h1 className='font1  font-light text-4xl text-center hidden lg:block'>Opulence</h1>
+                <div className='font1  font-light text-4xl text-center hidden lg:block'>
+                    <h1 className={alexFont.className}>Opulence</h1>
+
+                </div>
+
 
                 <div className=''>
-                    <div className='flex justify-between lg:w-[15rem]'>
+                    <div className='flex justify-between  lg:w-[15rem]'>
                         <button onClick={toggleMobileMenu}>
 
                             <ImMenu size={30} color='gray' className='lg:hidden' />
@@ -128,7 +136,10 @@ function NavBar() {
                     </div>
 
                 </div>
-                <h1 className='font1  font-light text-2xl text-center lg:hidden block'>Opulence</h1>
+                <div className='font1  font-light text-3xl text-center lg:hidden block'>
+                    <h1 className={alexFont.className}>Opulence</h1>
+
+                </div>
                 <button className='' onClick={() => { setShowCart(true) }}>
                     <IoBagHandle size={30} color='gray' />
                 </button>
