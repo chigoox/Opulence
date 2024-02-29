@@ -52,11 +52,11 @@ function Home() {
       </div>
 
 
-      <div className='md:h-[40rem] w-full flex items-center justify-center rounded-b-full  overflow-hidden'>
-        <img className='h-auto lg:h-[50rem]   object-cover' src="https://images.unsplash.com/photo-1619086303291-0ef7699e4b31?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZmFzaGlvbiUyMG1vZGVsfGVufDB8fDB8fHww" alt="" />
+      <div className='md:h-[40rem] lg:h-[50rem] w-full flex items-center justify-center rounded-b-full  overflow-hidden'>
+        <img className='h-auto lg:h-[50rem] lg:z-10  object-cover' src="https://images.unsplash.com/photo-1619086303291-0ef7699e4b31?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZmFzaGlvbiUyMG1vZGVsfGVufDB8fDB8fHww" alt="" />
 
       </div>
-      <div className='absolute top-56 w-full center'>
+      <div className='absolute top-56 lg:z-10 w-full center'>
         <motion.div
           initial={{
             x: "100%",
