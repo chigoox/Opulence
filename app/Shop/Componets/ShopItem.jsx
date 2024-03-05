@@ -5,6 +5,7 @@ import { Dosis, Grandstander } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import ProductView from './ProductView';
 const font = Grandstander({ subsets: ['latin'], weight: ['400'] })
 const font2 = Dosis({ subsets: ['latin'], weight: ['400'] })
 
@@ -13,6 +14,7 @@ function ShopItem({ shopItems, location = 'HotTools', onShopPage }) {
     const { name, images, metadata } = shopItems ? shopItems : {}
     const { price } = metadata
     const [productsLoaded, setProductsLoaded] = useState(false)
+    const [ShowQuickView, setShowQuickView] = useState(false)
     // const stars = Array.apply(null, Array(rating))
     const awaitLoading = () => {
         setTimeout(() => {
@@ -20,12 +22,23 @@ function ShopItem({ shopItems, location = 'HotTools', onShopPage }) {
         }, getRand(500));
     }
 
+    const toggleQuickView = () => {
+        console.log(shopItems)
+        if (ShowQuickView == false) return setShowQuickView(shopItems)
+        setShowQuickView(false)
+    }
+
     useEffect(() => {
         awaitLoading()
     }, [name])
     return (
         <div className='h-[20rem] fadeInZoomx2 flex-shrink-0 m-auto  w-[11rem] md:h-[33rem]  md:w-[20rem]  my-2 shadow-sm shadow-black-800   border-[#474747] hover:border-white hover:font-extrabold hover:border-2 trans  relative   overflow-hidden'>
-            <Skeleton isLoaded={productsLoaded} className='w-full h-full bg-gray-400'>
+            <ProductView
+                showShopView={ShowQuickView}
+                setShowShopView={setShowQuickView}
+            />
+
+            <Skeleton isLoaded={productsLoaded} className='w-full h-full bg-gray-400 group'>
                 <Link href={`/Shop/${location}/${name.replace(/\s/g, '')}`}>
                     <Image width={1920} height={1080} quality={100} src={images[0]} className='h-[10rem] md:h-[20rem] w-full object-cover' alt="" />
                     <div className='h-[30%] md:h-[20%]  bg-opacity-75  bottom-0  w-full flex items-center flex-col p-2'>
@@ -39,7 +52,7 @@ function ShopItem({ shopItems, location = 'HotTools', onShopPage }) {
 
                     </div>
                 </Link>
-                <Button onPress={(event) => { console.log(event); event.stopPropagation() }} className='w-full font-bold  rounded-none hover:bg-black-800 '>
+                <Button onPress={(event) => { toggleQuickView(event) }} className='w-full font-bold hidden group-hover:block  rounded-none hover:bg-black-800 '>
                     Add to cart
                 </Button>
 

@@ -7,11 +7,11 @@ import EmblaCarouselThumb from '@/app/Componets/HomePage/CarouselThumb'
 function ProductView({ showShopView, setShowShopView }) {
 
     const product = showShopView
+    const { name, images, metadata } = showShopView ? showShopView : {}
+    const { price } = metadata
 
-
-    const price = product?.price
-    const name = product?.name
-    const slides = product?.media?.map(item => (item))
+    console.log(product)
+    const slides = images?.map(item => (item))
     const desc = product?.caption
     const variants = filterNullFromArray(product?.variants || [])
 
@@ -75,7 +75,7 @@ function ProductView({ showShopView, setShowShopView }) {
                                     </div>
                                 </div>
                             </div>
-                            {product?.name}
+                            {name}
 
                         </ModalHeader>
                         <ModalBody className='hidescroll overflow-hidden overflow-y-scroll   p-0'>
