@@ -8,7 +8,7 @@ function ProductView({ showShopView, setShowShopView }) {
 
     const product = showShopView
     const { name, images, metadata } = showShopView ? showShopView : {}
-    const { price } = metadata
+    const { price } = metadata || { price: 0 }
 
     console.log(product)
     const slides = images?.map(item => (item))

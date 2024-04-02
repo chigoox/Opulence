@@ -1,13 +1,10 @@
 'use client'
-import { Button, Card, CardBody, CardFooter, CardHeader, Checkbox, CheckboxGroup, Input, Select, SelectItem, Textarea } from "@nextui-org/react"
 import { message } from "antd"
 import { useEffect, useState } from "react"
-import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai"
-import { Uploader } from "../Componets/General/Uploader"
-import { category } from "../META"
 import { updateDatabaseItem } from "../myCodes/Database"
 import { createProduct } from "../myCodes/Stripe"
-import { createArray } from "../myCodes/Util"
+import AdminBody from "./Componets/AdminBody"
+import { AdminMenu } from "./Componets/Menu/AdminMenu"
 
 
 
@@ -80,10 +77,43 @@ function Admin() {
 
     useEffect(() => { setPriceData(old => ({ ...old, for: productData?.productName?.replace(/\s/g, '') })) }, [productData])
 
-    return (
-        <div className="bg-black p-2  md:p-4">
 
-            <Card className="bg-black-800 w-[90%] md:w-[60%] mx-auto">
+
+
+
+    const [showMenu, setShowMenu] = useState(false)
+    const [selectedMenu, setSelectedMenu] = useState(false)
+    return (
+        <div className="bg-black min-h-screen  mt-10 overflow-hidden relative">
+
+
+            <div className="flex">
+                <AdminMenu selectedMenu={selectedMenu} setSelectedMenu={setSelectedMenu} />
+                <AdminBody selectedMenu={selectedMenu} />
+            </div>
+        </div>
+
+
+
+
+
+    )
+}
+
+export default Admin
+
+
+/* 
+
+        metadata: priceMeta,
+        nickname: priceName,
+        unit_amount: priceAmount * 100,
+
+
+
+
+
+         <Card className="bg-black-800 w-[90%] md:w-[60%] mx-auto">
                 <CardHeader className="bg-rose-500 text-white  font-extrabold">
                     <h1 className="text-center text-xl w-full">Product Data</h1>
                 </CardHeader>
@@ -280,21 +310,6 @@ function Admin() {
                 </CardFooter>
             </Card>
 
-
-
-
-        </div>
-    )
-}
-
-export default Admin
-
-
-/* 
-
-        metadata: priceMeta,
-        nickname: priceName,
-        unit_amount: priceAmount * 100,
 
 
 */
